@@ -1,0 +1,42 @@
+﻿@model List<WebApplication1.Models.product>
+
+@{
+    ViewBag.Title = "index";
+    int sn = 0;
+}
+<a href="@Url.Action("addproduct")">Add new record</a><br />
+<a href="@Url.Action("index","orders")">view order</a>
+<h2>Data about employee</h2>
+
+@using (Html.BeginForm("index", "Product", FormMethod.Post))
+{
+    <input type="date" value="" name="dat" class="dates" />
+    <input type="date" value="" name="dats" class="dates" />
+    <input type="submit" value="search" class="button" />
+
+
+
+<table class="table" border="1" style="color:red">
+    <tr>
+        <td style="background-color:powderblue">SN</td>
+        <td style="background-color:powderblue">pname</td>
+        <td style="background-color:powderblue">pcategory</td>
+        <td style="background-color:powderblue">pmdate</td>
+        <td style="background-color:powderblue" colspan="2">action</td>
+    </tr>
+
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td>@(++sn)</td>
+            <td>@product.pname</td>
+            <td>@product.pcategory</td>
+            <td>@product.pmdate</td>
+
+
+            <td><a href="@Url.Action("Editproduct", new { pid = product.pid })">Edit</a></td>
+            <td><a href="@Url.Action("deletedata", new { pid = product.pid })">Delete</a></td>
+        </tr>
+    }
+</table>
+}

@@ -1,0 +1,53 @@
+﻿@model List<WebApplication1.Models.employee_salary_details>
+
+@{
+    ViewBag.Title = "index";
+    //int sn = 0;
+}
+<style>
+    .button{
+        padding: 5px;
+        margin: 5px;
+        border-radius: 6px;
+        background-color: green;
+        border: none;
+    }
+    input[type=date]{
+        margin: 8px;
+    }
+
+</style>
+<a href="@Url.Action("addsalary")">Add new record</a>
+<h2>Data about employee</h2>
+@using (Html.BeginForm("index", "employeesalary", FormMethod.Post))
+{
+                <span>Start date:</span><input type="date" value="" name="dat" class="dates"/>
+
+              <span>End date:</span>  <input type="date" value="" name="dats" class="dates"/>
+
+                <input type="submit" value="search" class="button"/><br /><br />
+
+
+
+
+<table class="table" border="1" style="color:red">
+    <tr>
+        <td style="background-color:powderblue">employee_id</td>
+        <td style="background-color:powderblue">salary_paid</td>
+        <td style="background-color:powderblue">paid_date</td>
+        <td style="background-color:powderblue">Edit</td>
+        <td style="background-color:powderblue">Delete</td>
+    </tr>
+
+    @foreach (var employee_salary_details in Model)
+    {
+        <tr>
+            <td>@employee_salary_details.employee_id</td>
+            <td>@employee_salary_details.salary_paid</td>
+            <td>@employee_salary_details.paid_date</td>
+            <td><a href="@Url.Action("Editemployee", new { employee_id = employee_salary_details.employee_id })">Edit</a></td>
+            <td><a href="@Url.Action("deletedata", new { id = employee_salary_details.id })">Delete</a></td>
+        </tr>
+    }
+</table>
+}

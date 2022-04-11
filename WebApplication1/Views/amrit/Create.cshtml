@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+<style>
+    .submit{
+        background-color: green;
+        color: white;
+        padding: 5px;
+        margin: 5px 0px;
+    }
+</style>
+
+<form action="SaveData">
+    <div>
+        <label>ID</label><br />
+        <input type="text" name="eid" />
+    </div>
+    <div>
+        <label>Name</label><br />
+        <input type="text" name="ename" />
+    </div>
+    <br />
+    <div>
+        <label>Address</label><br />
+        <input type="text" name="eaddress" />
+    </div>
+    <br />
+
+    <div>
+        <input class="btn btn-success" type="submit" name="submit" value="submit now" />
+    </div>
+</form>

@@ -1,0 +1,31 @@
+﻿@model WebApplication1.Models.product
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("UpdateData", "Product"))
+{
+    <input type="hidden" name="pid" value="@Model.pid" />
+    <div>
+        <label>Name</label><br />
+        <input type="text" name="pname" />
+    </div>
+    <br />
+    <div>
+        <label>Category</label><br />
+        <input type="text" name="pcategory" />
+    </div>
+    <br />
+    <div>
+        <label>mfd date</label><br />
+        <input type="date" name="pmdate" />
+    </div>
+    <br />
+
+    <div>
+        <input class="btn btn-success" type="submit" name="update" value="update now" />
+    </div>
+}
+
+

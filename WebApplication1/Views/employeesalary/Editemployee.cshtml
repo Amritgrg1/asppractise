@@ -1,0 +1,31 @@
+﻿@model WebApplication1.Models.employee_salary_details
+    {
+    ViewBag.Title = "Editemployee";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("UpdateData", "amrit"))
+{
+    //<input type="hidden" name="eid" value="@Model.eid" />
+    <div>
+        <label>employee_id</label><br />
+        <input type="text" name="employee_id" />
+    </div>
+    <div>
+        <label>salary_paid</label><br />
+        <input type="text" name="salary_paid" />
+    </div>
+    <br />
+    <div>
+        <label>paid_date</label><br />
+        <input type="date" name="paid_date" />
+    </div>
+    <br />
+
+    <div>
+        <input class="btn btn-success" type="submit" name="update" value="update now" />
+    </div>
+}
+
+

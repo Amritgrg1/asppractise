@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>addproduct</h2>
+<style>
+    .submit {
+        background-color: green;
+        color: white;
+        padding: 5px;
+        margin: 5px 0px;
+    }
+</style>
+
+<form action="SaveData">
+    
+    <div>
+        <label>Name</label><br />
+        <input type="text" name="pname" />
+    </div>
+    <br />
+    <div>
+        <label>Category</label><br />
+        <input type="text" name="pcategory" />
+    </div>
+    <br /> 
+    <div>
+        <label>mfd date</label><br />
+        <input type="date" name="pmdate" />
+    </div>
+    <br />
+
+    <div>
+        <input class="btn btn-success" type="submit" name="submit" value="submit now" />
+    </div>
+</form>

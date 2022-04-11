@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "addsalary";
+}
+
+<h2>Create</h2>
+
+<style>
+    .submit {
+        background-color: green;
+        color: white;
+        padding: 5px;
+        margin: 5px 0px;
+    }
+</style>
+
+@*<form action="SaveData">*@
+@using (Html.BeginForm("SaveData", "employeesalary", FormMethod.Post))
+{
+<div>
+    <label>Employeeid</label><br />
+    @Html.DropDownList("employeelist", null, "Select", htmlAttributes: new { @Name = "employee_id", @class = "form-control" })
+    @*<input type="text" name="employee_id" value="" class="form-control" />*@
+</div>
+    <br />
+    <div>
+        <label>Salary_paid</label><br />
+        <input type="text" name="salary_paid" />
+    </div> 
+    <div>
+        <label>Paid_date</label><br />
+        <input type="date" name="paid_date" />
+    </div>
+    <br />
+
+    <div>
+        <input class="btn btn-success" type="submit" name="submit" value="submit now" />
+    </div>
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b1a6b243a9174268b3630d768d2c08b6" Name="Diagram1">
+        <EntityTypeShape EntityType="amritModel.employee" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="amritModel.teacher" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="amritModel.employee_salary_details" Width="1.5" PointX="3" PointY="4.375" />
+        <AssociationConnector Association="amritModel.FK_employee_salary_details_employee" />
+        <EntityTypeShape EntityType="amritModel.order" Width="1.5" PointX="7.625" PointY="0.875" />
+        <EntityTypeShape EntityType="amritModel.product" Width="1.5" PointX="5.375" PointY="0.875" />
+        <AssociationConnector Association="amritModel.FK__orders__pid__71D1E811" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

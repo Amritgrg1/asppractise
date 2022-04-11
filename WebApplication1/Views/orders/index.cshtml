@@ -1,0 +1,30 @@
+﻿@model List<WebApplication1.Models.order>
+
+@{
+    ViewBag.Title = "index";
+    int sn = 0;
+}
+<a href="@Url.Action("addorders")">Add new record</a>
+<h2>Data about employee</h2>
+
+
+<table class="table" border="1" style="color:red">
+    <tr>
+        <td style="background-color:powderblue">pid</td>
+        <td style="background-color:powderblue">orderdate</td>
+        <td style="background-color:powderblue">oderquantity</td>
+        <td style="background-color:powderblue">Edit</td>
+        <td style="background-color:powderblue">Delete</td>
+    </tr>
+
+    @foreach (var order in Model)
+    {
+        <tr>
+            <td>@order.pid</td>
+            <td>@order.odate</td>
+            <td>@order.oqty</td>
+            <td><a href="@Url.Action("Editorders", new { oid = order.oid })">Edit</a></td>
+            <td><a href="@Url.Action("deletedata", new { oid = order.oid })">Delete</a></td>
+        </tr>
+    }
+</table>

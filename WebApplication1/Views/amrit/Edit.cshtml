@@ -1,0 +1,31 @@
+﻿@model WebApplication1.Models.employee
+    @{ 
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("UpdateData", "amrit"))
+{
+    <input type="hidden" name="eid" value="@Model.eid" />
+    <div>
+        <label>ID</label>
+        <input type="text" name="eid"/>
+    </div>
+    <div>
+        <label>Name</label><br />
+        <input type="text" name="ename" />
+    </div>
+    <br />
+    <div>
+        <label>Address</label><br />
+        <input type="text" name="eaddress" />
+    </div>
+    <br />
+
+    <div>
+        <input class="btn btn-success" type="submit" name="update" value="update now" />
+    </div>
+}
+
+

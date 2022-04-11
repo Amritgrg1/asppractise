@@ -1,0 +1,32 @@
+﻿@model WebApplication1.Models.order
+    @{
+    ViewBag.Title = "Editemployee";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("UpdateData", "orders",FormMethod.Post))
+{
+    <input type="hidden" name="oid" value="@Model.oid" />
+<div>
+    <label>product id</label><br />
+    @Html.DropDownList("employeelist", null, "Select", htmlAttributes: new { @Name = "pid", @class = "form-control" })
+    @*<input type="text" name="employee_id" />*@
+</div>
+    <div>
+        <label>odate</label><br />
+        <input type="date" name="odate" />
+    </div>
+    <br />
+    <div>
+        <label>oqty</label><br />
+        <input type="text" name="oqty" />
+    </div>
+    <br />
+
+    <div>
+        <input class="btn btn-success" type="submit" name="update" value="update now" />
+    </div>
+}
+
+

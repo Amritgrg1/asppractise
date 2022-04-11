@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="amritModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MainEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="employees" EntityType="amritModel.employee" />
+    <EntitySet Name="teachers" EntityType="amritModel.teacher" />
+    <EntitySet Name="employee_salary_details" EntityType="amritModel.employee_salary_details" />
+    <AssociationSet Name="FK_employee_salary_details_employee" Association="amritModel.FK_employee_salary_details_employee">
+      <End Role="employee" EntitySet="employees" />
+      <End Role="employee_salary_details" EntitySet="employee_salary_details" />
+    </AssociationSet>
+    <EntitySet Name="orders" EntityType="amritModel.order" />
+    <EntitySet Name="products" EntityType="amritModel.product" />
+    <AssociationSet Name="FK__orders__pid__71D1E811" Association="amritModel.FK__orders__pid__71D1E811">
+      <End Role="product" EntitySet="products" />
+      <End Role="order" EntitySet="orders" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="employee">
+    <Key>
+      <PropertyRef Name="eid" />
+    </Key>
+    <Property Name="eid" Type="Int32" Nullable="false" />
+    <Property Name="ename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="eaddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="employee_salary_details" Relationship="amritModel.FK_employee_salary_details_employee" FromRole="employee" ToRole="employee_salary_details" />
+  </EntityType>
+  <EntityType Name="teacher">
+    <Key>
+      <PropertyRef Name="tid" />
+    </Key>
+    <Property Name="tid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="taddress" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="employee_salary_details">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="employee_id" Type="Int32" />
+    <Property Name="salary_paid" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="paid_date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="employee" Relationship="amritModel.FK_employee_salary_details_employee" FromRole="employee_salary_details" ToRole="employee" />
+  </EntityType>
+  <Association Name="FK_employee_salary_details_employee">
+    <End Type="amritModel.employee" Role="employee" Multiplicity="0..1" />
+    <End Type="amritModel.employee_salary_details" Role="employee_salary_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="eid" />
+      </Principal>
+      <Dependent Role="employee_salary_details">
+        <PropertyRef Name="employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="oid" />
+    </Key>
+    <Property Name="oid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pid" Type="Int32" Nullable="false" />
+    <Property Name="odate" Type="DateTime" Precision="3" />
+    <Property Name="oqty" Type="Int32" />
+    <NavigationProperty Name="product" Relationship="amritModel.FK__orders__pid__71D1E811" FromRole="order" ToRole="product" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="pid" />
+    </Key>
+    <Property Name="pid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pcategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pmdate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="orders" Relationship="amritModel.FK__orders__pid__71D1E811" FromRole="product" ToRole="order" />
+  </EntityType>
+  <Association Name="FK__orders__pid__71D1E811">
+    <End Type="amritModel.product" Role="product" Multiplicity="1" />
+    <End Type="amritModel.order" Role="order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="pid" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

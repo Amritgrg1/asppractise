@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "addorders";
+}
+
+<h2>Create</h2>
+
+<style>
+    .submit {
+        background-color: green;
+        color: white;
+        padding: 5px;
+        margin: 5px 0px;
+    }
+</style>
+
+@*<form action="SaveData">*@
+@using (Html.BeginForm("SaveData", "orders", FormMethod.Post))
+{
+    <div>
+        <label>product id</label><br />
+        @Html.DropDownList("employeelist", null, "Select", htmlAttributes: new { @Name = "pid", @class = "form-control" })
+        @*<input type="text" name="employee_id" value="" class="form-control" />*@
+    </div>
+    <br />
+    
+    <div>
+        <label>quantity</label><br />
+        <input type="text" name="oqty" />
+    </div>
+    <br />
+    <div>
+        <label>date</label><br />
+        <input type="date" name="odate" />
+    </div>
+    <br />
+
+
+    <div>
+        <input class="btn btn-success" type="submit" name="submit" value="submit now" />
+    </div>
+}
